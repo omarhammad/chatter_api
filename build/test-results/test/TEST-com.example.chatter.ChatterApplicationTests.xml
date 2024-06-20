@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.chatter.ChatterApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-06-20T19:37:59" hostname="omarhammad" time="0.729">
+  <properties/>
+  <testcase name="contextLoads()" classname="com.example.chatter.ChatterApplicationTests" time="0.729"/>
+  <system-out><![CDATA[21:37:55.652 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.chatter.ChatterApplicationTests]: ChatterApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+21:37:55.757 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.chatter.ChatterApplication for test class com.example.chatter.ChatterApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.1)
+
+2024-06-20T21:37:56.201+02:00  INFO 114152 --- [chatter] [    Test worker] c.e.chatter.ChatterApplicationTests      : Starting ChatterApplicationTests using Java 22.0.1 with PID 114152 (started by omarhammad in /home/omarhammad/IdeaProjects/chatter_api)
+2024-06-20T21:37:56.203+02:00  INFO 114152 --- [chatter] [    Test worker] c.e.chatter.ChatterApplicationTests      : No active profile set, falling back to 1 default profile: "default"
+2024-06-20T21:37:56.905+02:00  INFO 114152 --- [chatter] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-20T21:37:56.926+02:00  INFO 114152 --- [chatter] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 0 JPA repository interfaces.
+2024-06-20T21:37:57.415+02:00  INFO 114152 --- [chatter] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-20T21:37:57.618+02:00  INFO 114152 --- [chatter] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3d3a1903
+2024-06-20T21:37:57.620+02:00  INFO 114152 --- [chatter] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-20T21:37:57.668+02:00  INFO 114152 --- [chatter] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-20T21:37:57.732+02:00  INFO 114152 --- [chatter] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-06-20T21:37:57.770+02:00  INFO 114152 --- [chatter] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-20T21:37:58.090+02:00  INFO 114152 --- [chatter] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-20T21:37:58.522+02:00  INFO 114152 --- [chatter] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-20T21:37:58.527+02:00  INFO 114152 --- [chatter] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-20T21:37:58.685+02:00  WARN 114152 --- [chatter] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-20T21:37:59.151+02:00  WARN 114152 --- [chatter] [    Test worker] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 9667f7a5-7fe5-4219-82dc-aa52fc55af15
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2024-06-20T21:37:59.177+02:00  INFO 114152 --- [chatter] [    Test worker] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2024-06-20T21:37:59.360+02:00  INFO 114152 --- [chatter] [    Test worker] c.e.chatter.ChatterApplicationTests      : Started ChatterApplicationTests in 3.47 seconds (process running for 4.64)
+]]></system-out>
+  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (/home/omarhammad/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.14.17/e3c251a39dc90badaf71c83427ba46840f219d8d/byte-buddy-agent-1.14.17.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>

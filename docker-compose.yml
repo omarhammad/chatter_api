@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  db_prod:
+    image: postgres:16.1-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: 'chatter_db'
+      POSTGRES_USER: 'spring'
+      POSTGRES_PASSWORD: 'spring'
+
+    ports:
+      - '1100:5432'
+
+
+  db_dev:
+    image: postgres:16.1-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: 'chatter_dev_db'
+      POSTGRES_USER: 'spring'
+      POSTGRES_PASSWORD: 'spring'
+
+    ports:
+      - '1200:5432'
+
+  db_test:
+    image: postgres:16.1-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: 'chatter_test_db'
+      POSTGRES_USER: 'test'
+      POSTGRES_PASSWORD: 'test'
+
+    ports:
+      - '1300:5432'

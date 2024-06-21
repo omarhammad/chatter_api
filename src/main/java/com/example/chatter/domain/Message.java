@@ -10,9 +10,13 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String content;
+    private String content; // Can be Text,Video or Image URL
 
+    @Enumerated(EnumType.STRING)
     private ContentType contentType;
+
+    @Enumerated(EnumType.STRING)
+    private MessageStatus status;
 
     @ManyToOne
     private Chat chat;
@@ -54,5 +58,29 @@ public class Message {
 
     public void setSender(Chatter sender) {
         this.sender = sender;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public ContentType getContentType() {
+        return contentType;
+    }
+
+    public void setContentType(ContentType contentType) {
+        this.contentType = contentType;
+    }
+
+    public MessageStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(MessageStatus status) {
+        this.status = status;
     }
 }

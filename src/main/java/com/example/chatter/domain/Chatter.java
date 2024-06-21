@@ -3,7 +3,6 @@ package com.example.chatter.domain;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -13,11 +12,19 @@ public class Chatter {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String firstName;
+
     private String lastName;
+
     private String username;
-    private String phoneNumber;
+
+    private String email;
+
+    private ChatterStatus status;
+
     private LocalDateTime lastSeen;
+
     private boolean isBlocked;
 
     @ManyToMany
@@ -62,12 +69,12 @@ public class Chatter {
         this.username = username;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setEmail(String phoneNumber) {
+        this.email = phoneNumber;
     }
 
     public LocalDateTime getLastSeen() {
@@ -92,5 +99,13 @@ public class Chatter {
 
     public void setChats(Set<Chat> chats) {
         this.chats = chats;
+    }
+
+    public ChatterStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ChatterStatus status) {
+        this.status = status;
     }
 }

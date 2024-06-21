@@ -2,6 +2,7 @@ package com.example.chatter.domain;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -18,12 +19,11 @@ public class Chat {
 
     @OneToOne
     private Message lastMessage;
-
-    @OneToOne
-    private Chatter lastSender;
+    
 
     public void setId(Long id) {
         this.id = id;
+
     }
 
     public Long getId() {
@@ -54,11 +54,4 @@ public class Chat {
         this.messages = messages;
     }
 
-    public Chatter getLastSender() {
-        return lastSender;
-    }
-
-    public void setLastSender(Chatter lastSender) {
-        this.lastSender = lastSender;
-    }
 }

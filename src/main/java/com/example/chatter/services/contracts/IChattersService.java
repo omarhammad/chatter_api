@@ -8,4 +8,6 @@ public interface IChattersService {
     ChatterResponseDTO createNewChatter(String email);
 
     Chatter getChatterByEmailForAuth(String email);
+
+    void updateChatter(Long id, String email, String firstName, String lastName, String username);
 }

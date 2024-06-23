@@ -27,6 +27,6 @@ public class CustomUserDetailsService implements UserDetailsService {
         }
 
         // Assuming all users have ROLE_USER authority for simplicity
-        return new CustomUserDetails(chatter.getEmail(), Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")));
+        return new CustomUserDetails(chatter.getId(), chatter.getEmail(), Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")));
     }
 }

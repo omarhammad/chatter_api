@@ -28,7 +28,7 @@ public class OtpServices implements IOtpService {
 
     @Override
     @Transactional
-    public String sendOtp(String email) {
+    public void sendOtp(String email) {
 
         otpRepository.deleteAllByEmailAndIsUsedFalse(email);
 
@@ -41,7 +41,6 @@ public class OtpServices implements IOtpService {
         try {
             Otp savedOtp = otpRepository.save(otp);
             mailService.sendOtpEmail(email, savedOtp.getCode());
-            return savedOtp.getCode();
         } catch (IOException e) {
             throw new OtpCodeNotSentException("Issue ending the otp code");
         } catch (Exception e) {

@@ -4,7 +4,6 @@ import com.example.chatter.domain.Chatter;
 import com.example.chatter.presentation.api.dtos.auth.CurrentUserResponseDTO;
 import com.example.chatter.presentation.api.dtos.auth.GenerateOtpRequestDto;
 import com.example.chatter.presentation.api.dtos.auth.ValidateOtpRequestDto;
-import com.example.chatter.presentation.api.dtos.chatters.ChatterResponseDTO;
 import com.example.chatter.services.contracts.IChattersService;
 import com.example.chatter.services.contracts.IOtpService;
 import com.example.chatter.technical.security.CustomUserDetails;
@@ -25,14 +24,11 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -60,14 +56,13 @@ public class AuthRestController {
     @PostMapping("/send-otp")
     public ResponseEntity<String> sentOtp(@RequestBody @Valid GenerateOtpRequestDto requestDto) {
 
-        String otpCode;
         try {
-            otpCode = otpService.sendOtp(requestDto.getEmail());
+              otpService.sendOtp(requestDto.getEmail());
 
         } catch (OtpInsertionException | OtpCodeNotSentException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to send OTP. Please try again later.");
         }
-        return ResponseEntity.status(HttpStatus.CREATED).body(otpCode);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
 
     }
 
@@ -119,7 +114,6 @@ public class AuthRestController {
         return ResponseEntity.ok(responseDTO);
 
     }
-
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex) {

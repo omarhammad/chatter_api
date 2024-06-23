@@ -2,6 +2,8 @@ plugins {
     java
     id("org.springframework.boot") version "3.3.1"
     id("io.spring.dependency-management") version "1.1.5"
+    id("com.github.node-gradle.node") version "7.0.2"
+
 }
 
 group = "com.example"
@@ -36,6 +38,10 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.security:spring-security-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
+tasks.named<Copy>("processResources") {
+    dependsOn("npm_run_build")
 }
 
 tasks.withType<Test> {

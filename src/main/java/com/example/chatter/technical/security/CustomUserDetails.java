@@ -8,14 +8,21 @@ import java.util.List;
 
 public class CustomUserDetails implements UserDetails {
 
+
+    private Long id;
     private String email;
     private Collection<? extends GrantedAuthority> authorities;
 
-    public CustomUserDetails(String email, Collection<? extends GrantedAuthority> authorities) {
+    public CustomUserDetails(Long id, String email, Collection<? extends GrantedAuthority> authorities) {
+        this.id = id;
         this.email = email;
         this.authorities = authorities;
     }
 
+
+    public Long getId() {
+        return id;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

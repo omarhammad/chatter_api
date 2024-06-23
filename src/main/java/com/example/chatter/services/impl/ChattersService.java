@@ -34,4 +34,18 @@ public class ChattersService implements IChattersService {
         return chattersRepository.findByEmail(email).orElse(null);
     }
 
+    @Override
+    public void updateChatter(Long id, String email, String firstName, String lastName, String username) {
+
+        Chatter chatter = chattersRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Chatter Not Found!"));
+
+        chatter.setEmail(email);
+        chatter.setFirstName(firstName);
+        chatter.setLastName(lastName);
+        chatter.setUsername(username);
+
+        chattersRepository.save(chatter);
+
+    }
+
 }

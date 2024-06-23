@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import java.time.LocalDateTime;
 
 @Entity
-public class OTP {
+public class Otp {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,6 @@ public class OTP {
 
     private LocalDateTime timeToLive;
 
-    private Boolean active;
 
     private Boolean isUsed;
 
@@ -50,13 +49,6 @@ public class OTP {
         this.timeToLive = timeToLive;
     }
 
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
 
     public Boolean getUsed() {
         return isUsed;
@@ -72,5 +64,17 @@ public class OTP {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Otp{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", email='" + email + '\'' +
+                ", timeToLive=" + timeToLive +
+                ", isUsed=" + isUsed +
+                '}';
     }
 }

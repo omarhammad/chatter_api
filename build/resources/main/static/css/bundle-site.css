@@ -14228,13 +14228,12 @@ html, body {
 .chatter-btns {
   font-weight: bold;
   background: #7198BB;
-  border-radius: 20%;
+  border-radius: 50%; /* Changed to 50% for a rounded button */
   color: white;
 }
 
 .chatter-btns:hover {
   background: white;
-  border-radius: 20%;
   color: #7198BB;
 }
 

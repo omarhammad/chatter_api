@@ -3,7 +3,6 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 @import "~bootswatch/dist/yeti/bootswatch";
 
-
 html, body {
   background-color: #547A9C;
   width: 100%;
@@ -34,7 +33,6 @@ html, body {
   display: flex;
   flex-flow: column;
   justify-content: center;
-
 }
 
 .test-border {
@@ -45,17 +43,15 @@ html, body {
   background: #2E5070;
 }
 
-
 .chatter-btns {
   font-weight: bold;
   background: #7198BB;
-  border-radius: 20%;
+  border-radius: 50%; /* Changed to 50% for a rounded button */
   color: white;
 }
 
 .chatter-btns:hover {
   background: white;
-  border-radius: 20%;
   color: #7198BB;
 }
 
@@ -80,7 +76,6 @@ html, body {
 .otp-code-txt:focus-within {
   outline: none !important;
   border: 3px solid #C7E4FE;
-
 }
 
 .text-data {
@@ -92,7 +87,6 @@ html, body {
 }
 
 @media (max-width: 992px) {
-
   html, body {
     padding: 2px;
   }
@@ -120,7 +114,6 @@ html, body {
     height: 10%;
   }
 
-
   .chatter-logo {
     font-size: 64px;
     font-weight: normal;
@@ -131,5 +124,4 @@ html, body {
   .complete-profile-inputs {
     width: 80%;
   }
-
 }

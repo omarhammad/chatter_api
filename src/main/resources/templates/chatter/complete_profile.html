@@ -1,11 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title></title>
     <th:block th:insert="~{fragments/heading :: heading (title = 'Chats')}"></th:block>
+    <link th:href="@{/css/bundle-complete_profile.css}" rel="stylesheet"/>
 </head>
 <body>
+<div class="container-body">
+    <div class="container-fluid  container-content my-auto form-container-bg p-3">
+        <div class="container-fluid">
+            <div class="row">
+                <h1 class="chatter-logo text-center" style="fontSize:96px">Chatter</h1>
+            </div>
+            <div class="row">
+                <div class=" position-relative m-auto w-auto">
+                    <img class="rounded-circle" name="profile_pic" alt="profile_pic" width="128"
+                         src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"/>
+                    <div class="btn btn-light position-absolute bottom-0 end-0 me-2  rounded-circle p-2">
+                        <a class="bi bi-camera text-secondary" role="button" size="32"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <input name="username" class="form-control mx-auto complete-profile-inputs m-3 p-2 "
+                       placeholder="username"/>
+            </div>
+            <div class="row">
+                        <textarea name="bio" class="form-control mx-auto complete-profile-inputs  m-1 p-2 " rows="3"
+                                  placeholder="Bio"></textarea>
+            </div>
+            <div class="row">
+                <button class="btn chatter-btns rounded-pill w-25 mx-auto my-3">Done</button>
+            </div>
+        </div>
+    </div>
+</div>
 
+<script th:src="@{/js/bundle-complete_profile.js}"></script>
 </body>
 </html>

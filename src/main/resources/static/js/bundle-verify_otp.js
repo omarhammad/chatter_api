@@ -15115,10 +15115,12 @@ function _verify_otp() {
           return response.text();
         case 20:
           auth_type = _context.sent;
-          if (auth_type === 'SIGNIN') {
+          if (auth_type === 'SIGN_IN') {
             window.location.href = '/chats';
-          } else if (auth_type === 'SIGNUP') {
+          } else if (auth_type === 'SIGN_UP') {
             window.location.href = '/chatters/complete-profile';
+            sessionStorage.clear();
+            sessionStorage.setItem('source', (0,_util_crypto_js__WEBPACK_IMPORTED_MODULE_0__.encryptData)('SIGN_UP'));
           }
         case 22:
         case "end":

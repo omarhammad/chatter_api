@@ -1,4 +1,4 @@
-import {decryptData} from "../util/crypto.js";
+import {decryptData, encryptData} from "../util/crypto.js";
 import {HttpStatus} from "../util/http_status.js";
 import {showToast} from "../util/toast.js";
 
@@ -70,10 +70,12 @@ async function verify_otp() {
         showToast("There is no OTP 'sign in/up again!'");
     } else if (response.status === HttpStatus.OK) {
         const auth_type = await response.text();
-        if (auth_type === 'SIGNIN') {
+        if (auth_type === 'SIGN_IN') {
             window.location.href = '/chats';
-        } else if (auth_type === 'SIGNUP') {
+        } else if (auth_type === 'SIGN_UP') {
             window.location.href = '/chatters/complete-profile';
+            sessionStorage.clear();
+            sessionStorage.setItem('source', encryptData('SIGN_UP'))
         }
     }
 

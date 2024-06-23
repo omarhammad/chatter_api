@@ -11,7 +11,7 @@ public class ChatterController {
 
     @GetMapping("/complete-profile")
     public String loadCompleteProfilePage() {
-        return "auth/complete_profile";
+        return "chatter/complete_profile";
     }
 
 

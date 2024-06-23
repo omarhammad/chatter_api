@@ -5,6 +5,7 @@ import com.example.chatter.technical.security.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -28,17 +29,35 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
         http
-                .csrf(AbstractHttpConfigurer::disable)
+                .csrf(csrf -> csrf.ignoringRequestMatchers(
+                        antMatcher(HttpMethod.POST, "/api/auth/send-otp"),
+                        antMatcher(HttpMethod.POST, "/api/auth/verify-otp")
+                ))
                 .authorizeHttpRequests(auth -> auth.requestMatchers(
+                                antMatcher(HttpMethod.GET, "/js/**"),
+                                antMatcher(HttpMethod.GET, "/css/**"),
+                                antMatcher(HttpMethod.GET, "/media/**"),
+                                antMatcher(HttpMethod.GET, "/webjars/**"),
                                 antMatcher(HttpMethod.POST, "/api/auth/send-otp"),
                                 antMatcher(HttpMethod.POST, "/api/auth/verify-otp"),
+                                antMatcher(HttpMethod.GET, "/auth/verify"),
                                 antMatcher(HttpMethod.GET, "/")
                         ).permitAll()
-                        .requestMatchers("/api/auth/user/current").authenticated()  // Ensure this line is included
                         .anyRequest().authenticated())
                 .authenticationProvider(otpAuthenticationProvider)
-                .userDetailsService(userDetailsService);
+                .userDetailsService(userDetailsService)
+                .formLogin(form -> form.loginPage("/auth").permitAll().defaultSuccessUrl("/", true).failureUrl("/auth?error=true"))
+                .exceptionHandling(exception -> exception.authenticationEntryPoint(((request, response, authException) -> {
+                    if (!response.isCommitted()) {
+                        if (request.getRequestURI().startsWith("/api")) {
+                            response.setStatus(HttpStatus.FORBIDDEN.value());
+                        } else {
+                            response.sendRedirect(request.getContextPath() + "/auth");
+                        }
+                    }
+                })));
 
         return http.build();
     }

@@ -1,6 +1,7 @@
 import {decryptData, encryptData} from "../util/crypto.js";
 import {HttpStatus} from "../util/http_status.js";
 import {showToast} from "../util/toast.js";
+import {direct_access_not_allowed} from "../util/access_componenet.js";
 
 const verify_btn = document.querySelector("#verify_btn");
 const resend_btn = document.querySelector('#resend_btn');
@@ -34,11 +35,6 @@ function prepare_page() {
     document.querySelector("#to_email").innerText = decryptData(sessionStorage.getItem('email'));
 }
 
-function direct_access_not_allowed() {
-    const body = document.querySelector('body');
-    body.innerHTML = null;
-    body.innerHTML = '<div class="alert alert-danger text-center"> DIRECT ACCESS IS NOT ALLOWED ! </div>';
-}
 
 verify_btn.addEventListener('click', verify_otp)
 
@@ -72,6 +68,7 @@ async function verify_otp() {
         const auth_type = await response.text();
         if (auth_type === 'SIGN_IN') {
             window.location.href = '/chats';
+            sessionStorage.clear();
         } else if (auth_type === 'SIGN_UP') {
             window.location.href = '/chatters/complete-profile';
             sessionStorage.clear();

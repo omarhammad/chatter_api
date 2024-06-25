@@ -5,6 +5,7 @@ import com.example.chatter.services.contracts.IChattersService;
 import com.example.chatter.technical.security.CustomUserDetails;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -16,12 +17,14 @@ public class ChatterRestController {
 
     private final IChattersService chattersService;
 
+
     public ChatterRestController(IChattersService chattersService) {
+
         this.chattersService = chattersService;
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Void> updateChatterInfo(@RequestBody @Valid UpdateChatterRequestDTO requestDTO,
+    @PutMapping(value = "/{id}", consumes = "multipart/form-data")
+    public ResponseEntity<Void> updateChatterInfo(@ModelAttribute @Valid UpdateChatterRequestDTO requestDTO,
                                                   @PathVariable Long id, @AuthenticationPrincipal CustomUserDetails userDetails) {
 
         if (!userDetails.getId().equals(id)) {
@@ -33,8 +36,8 @@ public class ChatterRestController {
         }
 
         try {
-            chattersService.updateChatter(requestDTO.getId(), requestDTO.getEmail(), requestDTO.getFirstName()
-                    , requestDTO.getLastName(), requestDTO.getUsername());
+            chattersService.updateChatter(requestDTO.getId(), requestDTO.getEmail(), requestDTO.getProfilePic()
+                    , requestDTO.getBio(), requestDTO.getUsername());
         } catch (EntityNotFoundException e) {
             return ResponseEntity.notFound().build();
         } catch (Exception e) {
@@ -43,5 +46,6 @@ public class ChatterRestController {
 
         return ResponseEntity.noContent().build();
     }
+
 
 }

@@ -1,16 +1,14 @@
 package com.example.chatter.presentation.api.dtos.chatters;
 
-import com.example.chatter.domain.ChatterStatus;
-
-import java.time.LocalDateTime;
+import org.springframework.web.multipart.MultipartFile;
 
 public class UpdateChatterRequestDTO {
 
     private Long id;
 
-    private String firstName;
+    private MultipartFile profilePic;
 
-    private String lastName;
+    private String bio;
 
     private String username;
 
@@ -28,21 +26,6 @@ public class UpdateChatterRequestDTO {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 
     public String getUsername() {
         return username;
@@ -58,5 +41,22 @@ public class UpdateChatterRequestDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public MultipartFile getProfilePic() {
+        return profilePic;
+    }
+
+    public void setProfilePic(MultipartFile profilePic) {
+        this.profilePic = profilePic;
     }
 }

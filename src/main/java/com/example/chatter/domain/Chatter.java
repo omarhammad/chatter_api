@@ -13,12 +13,13 @@ public class Chatter {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String firstName;
-
-    private String lastName;
-
     @Column(unique = true)
     private String username;
+
+    private String profilePicUrl;
+
+    private String bio;
+
     @Column(unique = true)
     private String email;
 
@@ -43,23 +44,6 @@ public class Chatter {
 
     public Long getId() {
         return id;
-    }
-
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getUsername() {
@@ -108,5 +92,22 @@ public class Chatter {
 
     public void setStatus(ChatterStatus status) {
         this.status = status;
+    }
+
+
+    public String getProfilePicUrl() {
+        return profilePicUrl;
+    }
+
+    public void setProfilePicUrl(String profilePicUrl) {
+        this.profilePicUrl = profilePicUrl;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 }
